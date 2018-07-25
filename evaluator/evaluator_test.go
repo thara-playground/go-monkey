@@ -18,7 +18,7 @@ func TestEvalIntegerExpression(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		evaluated := testEval(tt.Input)
+		evaluated := testEval(tt.input)
 		testIntegerObject(t, evaluated, tt.expected)
 	}
 }
@@ -30,7 +30,7 @@ func testEval(input string) object.Object {
 	return Eval(program)
 }
 
-func testIntegerObject(t *testing.T, obj object.Object, exptected int64) {
+func testIntegerObject(t *testing.T, obj object.Object, expected int64) bool {
 	result, ok := obj.(*object.Integer)
 	if !ok {
 		t.Errorf("object is not Integer. got=%T (%+v)", obj, obj)
